@@ -1,3 +1,4 @@
+/* ===== Reset e Base ===== */
 * {
   margin: 0;
   padding: 0;
@@ -13,18 +14,19 @@ body {
 
 /* ===== Cabeçalho ===== */
 header {
-  background-color: #111111d8;
+  background-color: rgba(17, 17, 17, 0.85);
   padding: 20px 0;
   border-bottom: 1px solid #222;
   position: sticky;
   top: 0;
   z-index: 10;
+  backdrop-filter: blur(6px);
 }
 
 .container {
   width: 90%;
   max-width: 1100px;
-  margin: auto;
+  margin: 0 auto;
 }
 
 nav {
@@ -48,14 +50,14 @@ nav h1 {
   color: #f5f5f5;
   text-decoration: none;
   font-weight: 500;
-  transition: color 0.3s;
+  transition: color 0.3s ease;
 }
 
 .nav-links a:hover {
   color: #00d8ff;
 }
 
-/* ===== Seção Hero ===== */
+/* ===== Hero ===== */
 .hero {
   text-align: center;
   padding: 80px 0;
@@ -74,6 +76,25 @@ nav h1 {
 .hero h2 {
   font-size: 2rem;
   margin-bottom: 10px;
+  position: relative;
+}
+
+.hero h2::after {
+  content: "|";
+  animation: blink 0.8s infinite;
+  color: #00d8ff;
+}
+
+@keyframes blink {
+  0%,
+  50%,
+  100% {
+    opacity: 1;
+  }
+  25%,
+  75% {
+    opacity: 0;
+  }
 }
 
 .hero p {
@@ -91,11 +112,12 @@ nav h1 {
   border-radius: 6px;
   font-weight: bold;
   text-decoration: none;
-  transition: background 0.3s;
+  transition: background 0.3s ease, transform 0.2s ease;
 }
 
 .btn:hover {
   background-color: #00aacc;
+  transform: translateY(-2px);
 }
 
 /* ===== Seções ===== */
@@ -127,7 +149,7 @@ section p {
   background-color: #1a1a1a;
   padding: 20px;
   border-radius: 10px;
-  transition: transform 0.3s, background 0.3s;
+  transition: transform 0.3s ease, background 0.3s ease;
 }
 
 .projeto-card:hover {
@@ -149,173 +171,14 @@ section p {
   color: #00d8ff;
   text-decoration: none;
   font-weight: 500;
+  transition: color 0.3s ease;
 }
 
-/* ===== Contato ===== */
-.contact {
-  padding: 60px 0;
-  background-color: #0a0a0a;
+.projeto-card a:hover {
+  color: #00aacc;
 }
 
-.contact h2 {
-  text-align: center;
-  color: #00d1ff;
-  margin-bottom: 40px;
-  font-size: 1.8rem;
-}
-
-/* Grid responsivo lado a lado */
-.contact-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 25px;
-  justify-items: stretch;
-  align-items: stretch;
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-/* Cartão individual */
-.contact-card {
-  display: flex;
-  align-items: center;
-  gap: 18px;
-  background: linear-gradient(180deg, #111 0%, #0f0f0f 100%);
-  border-radius: 12px;
-  padding: 18px 22px;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  width: 100%;
-  max-width: 300px;
-}
-
-/* Hover */
-.contact-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
-}
-
-/* Icone */
-.contact-card img {
-  width: 42px;
-  height: 42px;
-  object-fit: contain;
-  filter: grayscale(100%) brightness(0.9);
-  transition: filter 0.25s ease, transform 0.25s ease;
-}
-
-/* Ao passar o mouse, icone ganha cor */
-.contact-card:hover img {
-  filter: none;
-  transform: scale(1.05);
-}
-
-/* Texto alinhado junto à imagem */
-.contact-info {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  overflow-wrap: anywhere;
-}
-
-.contact-title {
-  color: #00d1ff;
-  font-weight: 600;
-  margin: 0;
-  font-size: 0.95rem;
-}
-
-.contact-info p {
-  margin: 0;
-  color: #ddd;
-  font-size: 0.95rem;
-}
-
-.contact-info a {
-  color: #ddd;
-  text-decoration: none;
-  transition: color 0.2s ease;
-  word-break: break-word;
-}
-
-.contact-info a:hover {
-  color: #00d1ff;
-}
-
-/* Responsividade */
-@media (max-width: 900px) {
-  .contact-grid {
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  }
-}
-
-@media (max-width: 480px) {
-  .contact-card {
-    padding: 12px;
-    gap: 12px;
-    max-width: 100%;
-  }
-  .contact-card img {
-    width: 38px;
-    height: 38px;
-  }
-  .contact-title {
-    font-size: 0.9rem;
-  }
-}
-
-/* ===== Rodapé ===== */
-footer {
-  background-color: #111;
-  text-align: center;
-  padding: 20px;
-  border-top: 1px solid #222;
-  color: #888;
-  font-size: 0.9rem;
-}
-
-/* ===== Responsividade ===== */
-@media (max-width: 768px) {
-  nav {
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .hero h2 {
-    font-size: 1.6rem;
-  }
-
-  .hero p {
-    font-size: 1rem;
-  }
-}
-
-.hero h2::after {
-  content: "|";
-  animation: blink 0.8s infinite;
-  color: hsl(0, 216, 255);
-}
-
-@keyframes blink {
-  0%,
-  50%,
-  100% {
-    opacity: 1;
-  }
-  25%,
-  75% {
-    opacity: 0;
-  }
-}
-
-.fade-out {
-  opacity: 0;
-  transition: opacity 0, 5 ease;
-}
-
-/* Habilidades */
-
+/* ===== Habilidades ===== */
 .skills {
   text-align: center;
   padding: 60px 20px;
@@ -363,6 +226,83 @@ footer {
   filter: grayscale(0%) brightness(1);
 }
 
+/* ===== Contato ===== */
+.contact {
+  padding: 60px 0;
+  background-color: #0a0a0a;
+}
+
+.contact h2 {
+  text-align: center;
+  color: #00d1ff;
+  margin-bottom: 40px;
+  font-size: 1.8rem;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 25px;
+  justify-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.contact-card {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  background: linear-gradient(180deg, #111 0%, #0f0f0f 100%);
+  border-radius: 12px;
+  padding: 18px 22px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.contact-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+}
+
+.contact-card img {
+  width: 42px;
+  height: 42px;
+  object-fit: contain;
+  filter: grayscale(100%) brightness(0.9);
+  transition: filter 0.25s ease, transform 0.25s ease;
+}
+
+.contact-card:hover img {
+  filter: none;
+  transform: scale(1.05);
+}
+
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  overflow-wrap: anywhere;
+}
+
+.contact-title {
+  color: #00d1ff;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.contact-info p,
+.contact-info a {
+  color: #ddd;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.contact-info a:hover {
+  color: #00d1ff;
+}
+
+/* ===== Fade Animations ===== */
 .fade-up {
   opacity: 0;
   transform: translateY(40px);
@@ -372,4 +312,35 @@ footer {
 .fade-up.visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+.fade-out {
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+/* ===== Rodapé ===== */
+footer {
+  background-color: #111;
+  text-align: center;
+  padding: 20px;
+  border-top: 1px solid #222;
+  color: #888;
+  font-size: 0.9rem;
+}
+
+/* ===== Responsividade ===== */
+@media (max-width: 768px) {
+  nav {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .hero h2 {
+    font-size: 1.6rem;
+  }
+
+  .hero p {
+    font-size: 1rem;
+  }
 }
